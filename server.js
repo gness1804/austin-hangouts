@@ -8,7 +8,7 @@ mongoose.Promise = global.Promise;
 mongoose.connection.on('error', (err) => {
   console.error(`There was an error connecting to the database: → ${err.message}`);
 });
-// require('./api/models');
+require('./api/models');
 
 const app = express();
 const port = process.env.PORT || 3000;

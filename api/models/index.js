@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 
-const { Schema, model } = mongoose;
-
-const PlaceSchema = new Schema({
+const PlaceSchema = new mongoose.Schema({
   name: {
     type: String,
     required: 'Please enter the name of the establishment.',
@@ -18,4 +16,4 @@ const PlaceSchema = new Schema({
   photo: String,
 });
 
-module.exports = model('Place', PlaceSchema);
+module.exports = mongoose.model('Place', PlaceSchema);

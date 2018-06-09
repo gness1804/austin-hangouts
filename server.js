@@ -16,8 +16,6 @@ require('./api/models');
 
 const routes = require('./api/routes');
 
-routes(app);
-
 app.use(express.static('public'));
 
 app.use(bodyParser.json());
@@ -27,9 +25,7 @@ app.set('port', port);
 
 app.locals.title = 'Austin Hangouts';
 
-app.get('/', (req, res) => {
-  res.send('Hello');
-});
+app.use('/', routes);
 
 app.listen(app.get('port'), () => {
   console.log(`Server running on port ${port}`);

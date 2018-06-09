@@ -1,8 +1,13 @@
+const express = require('express');
+
+const router = express.Router();
 const controller = require('../controllers');
 
-const routes = (app) => {
-  app.route('/places')
-    .get(controller.listAll);
-};
+const { listAll } = controller;
 
-module.exports = routes;
+router.get('/', (req, res) => {
+  res.send('hello');
+});
+router.get('/places', listAll);
+
+module.exports = router;

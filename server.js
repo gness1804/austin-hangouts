@@ -1,10 +1,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-// const path = require('path');
-// const http = require('http');
+const mongoose = require('mongoose');
+require('dotenv').config({ path: 'vars.env' });
 
-const app = express();
 const port = process.env.PORT || 3000;
+const app = express();
+
+// mongodb
+mongoose.connect(process.env.DATABASE);
+mongoose.Promise = global.Promise;
+mongoose.connection.on('error', (err) => {
+  console.error(`There was an error connecting to the database: → ${err.message}`);
+});
+require('./api/models');
+
+const routes = require('./api/routes');
 
 app.use(express.static('public'));
 
@@ -15,9 +25,7 @@ app.set('port', port);
 
 app.locals.title = 'Austin Hangouts';
 
-app.get('/', (request, response) => {
-  response.send('');
-});
+app.use('/', routes);
 
 app.listen(app.get('port'), () => {
   console.log(`Server running on port ${port}`);

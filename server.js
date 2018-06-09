@@ -3,6 +3,10 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 require('dotenv').config({ path: 'vars.env' });
 
+const port = process.env.PORT || 3000;
+const app = express();
+
+// mongodb
 mongoose.connect(process.env.DATABASE);
 mongoose.Promise = global.Promise;
 mongoose.connection.on('error', (err) => {
@@ -10,11 +14,9 @@ mongoose.connection.on('error', (err) => {
 });
 require('./api/models');
 
-const app = express();
-const port = process.env.PORT || 3000;
-// const routes = require('./api/routes');
+const routes = require('./api/routes');
 
-// routes(app);
+routes(app);
 
 app.use(express.static('public'));
 

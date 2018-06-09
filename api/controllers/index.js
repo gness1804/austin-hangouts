@@ -16,7 +16,16 @@ const createPlace = async (req, res) => {
   res.json(place);
 };
 
+const updatePlace = async (req, res) => {
+  const place = await Place.findOneAndUpdate({ _id: req.params.placeId }, req.body, {
+    new: true,
+    runValidators: true,
+  }).exec();
+  res.send(`Successfully updated ${place.name}`);
+};
+
 module.exports = {
   listAll,
   createPlace,
+  updatePlace,
 };

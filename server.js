@@ -1,10 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-// const path = require('path');
-// const http = require('http');
+const mongoose = require('mongoose');
 
 const app = express();
 const port = process.env.PORT || 3000;
+const routes = require('./api/routes');
+
+// mongodb
+// const Place = require('./api/models');
+
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/Placedb');
 
 app.use(express.static('public'));
 
@@ -15,9 +21,7 @@ app.set('port', port);
 
 app.locals.title = 'Austin Hangouts';
 
-app.get('/', (request, response) => {
-  response.send('');
-});
+routes(app);
 
 app.listen(app.get('port'), () => {
   console.log(`Server running on port ${port}`);

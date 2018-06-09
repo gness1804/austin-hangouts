@@ -1,6 +1,6 @@
-const routes = (app) => {
-  const controller = require('../controllers');
+const controller = require('../controllers');
 
+const routes = (app) => {
   app.route('/places')
     .get(controller.listAll);
 };

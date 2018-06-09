@@ -24,8 +24,14 @@ const updatePlace = async (req, res) => {
   res.send(`Successfully updated ${place.name}`);
 };
 
+const readPlace = async (req, res) => {
+  const place = await Place.findOne({ _id: req.params.placeId });
+  res.json(place);
+};
+
 module.exports = {
   listAll,
   createPlace,
   updatePlace,
+  readPlace,
 };

@@ -29,9 +29,15 @@ const readPlace = async (req, res) => {
   res.json(place);
 };
 
+const deletePlace = async (req, res) => {
+  await Place.remove({ _id: req.params.placeId });
+  res.send('Successfully deleted the place.');
+};
+
 module.exports = {
   listAll,
   createPlace,
   updatePlace,
   readPlace,
+  deletePlace,
 };

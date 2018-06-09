@@ -8,6 +8,7 @@ const {
   createPlace,
   updatePlace,
   readPlace,
+  deletePlace,
 } = controller;
 
 // get method
@@ -22,5 +23,8 @@ router.post('/places', createPlace);
 
 // put method
 router.put('/places/:placeId', updatePlace);
+
+// delete method
+router.delete('/places/:placeId', deletePlace);
 
 module.exports = router;

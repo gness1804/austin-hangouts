@@ -11,6 +11,12 @@ const listAll = (req, res) => {
   });
 };
 
+const createPlace = async (req, res) => {
+  const place = await (new Place(req.body)).save();
+  res.json(place);
+};
+
 module.exports = {
   listAll,
+  createPlace,
 };

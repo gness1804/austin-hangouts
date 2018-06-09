@@ -1,10 +1,8 @@
-// @flow
-
 const mongoose = require('mongoose');
 
 const { Schema, model } = mongoose;
 
-const PlaceSchema: Schema = new Schema({
+const PlaceSchema = new Schema({
   name: {
     type: String,
     required: 'Please enter the name of the establishment.',

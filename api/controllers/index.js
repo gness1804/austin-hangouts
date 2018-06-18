@@ -7,7 +7,6 @@ const listAll = (req, res) => {
     if (err) {
       res.send(err);
     }
-    res.set('Access-Control-Allow-Origin', 'http://localhost:8080');
     res.json(place);
   });
 };

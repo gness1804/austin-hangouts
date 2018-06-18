@@ -15,11 +15,14 @@ mongoose.connection.on('error', (err) => {
 require('./api/models');
 
 const routes = require('./api/routes');
+const setHeaders = require('./api/controllers/middleware/setHeaders');
 
 app.use(express.static('public'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(setHeaders);
 
 app.set('port', port);
 

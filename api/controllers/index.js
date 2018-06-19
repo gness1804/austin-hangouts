@@ -30,6 +30,7 @@ const readPlace = async (req, res) => {
 };
 
 const deletePlace = async (req, res) => {
+  console.log('req.params:', req.params);
   await Place.remove({ _id: req.params.placeId });
   res.send('Successfully deleted the place.');
 };
